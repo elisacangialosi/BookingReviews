@@ -1,0 +1,17 @@
+---
+title: "Untitled"
+output: github_document
+---
+#Descriptive Stats 
+There are a total of
+```{r}
+nrow(reviewResponse)
+```
+italian reviews that also have a response from the owner of the hotel.
+
+```{r}
+#number of responses
+table(is.na(data_all$response))
+reviewResponse_it <- data_all_reviewsOnly %>% 
+  filter(detect_language(data_all_reviewsOnly$full) == 'it')
+reviewResponse <- reviewResponse_it[!is.na(reviewResponse_it$response),]
